@@ -25,13 +25,23 @@ To get this up and running on UnRaid, you must install:
 * Userscripts
 * NerdPack
 
+Within NerdPack, enable the following:
+
+* python3
+* libffi
+* python-pip
+* python-setuptools
+
+To correctly configirue the python enviorment, you must install some of the packages used. To do this, open up the UnRaid terminal and run the following commands:
+
+* pip3 install pandas
+* pip3 install re
+* pip3 install requests
+* pip3 install json
+* pip3 install datetime
 
 
-
-
-
-
-
+From there, go to UserScripts....
 
 
 
