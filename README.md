@@ -32,14 +32,7 @@ Within NerdPack, enable the following:
 * python-pip
 * python-setuptools
 
-To correctly configirue the python enviorment, you must install some of the packages used. To do this, open up the UnRaid terminal and run the following commands:
-
-* pip3 install pandas
-* pip3 install re
-* pip3 install requests
-* pip3 install json
-* pip3 install datetime
-
+The script will attempt to leverage pip3 (installed by Nerdpack) to install pandas & requests.
 
 From there, go to UserScripts....
 
