@@ -32,8 +32,6 @@ Within NerdPack, enable the following:
 * python-pip
 * python-setuptools
 
-The script will attempt to leverage pip3 (installed by Nerdpack) to install pandas & requests.
-
 From there, go to UserScripts....
 
 
