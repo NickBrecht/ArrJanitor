@@ -21,6 +21,8 @@ The script was designed to be ran in UnRaid via userscripts with python 3.8 inst
 
 ## How? 
 
+As statred this script should be OS agnostic however the original intent was/is to run within UnRaid. 
+
 To get this up and running on UnRaid, you must install:
 * [UserScripts](https://forums.unraid.net/topic/48286-plugin-ca-user-scripts/)
 * [NerdPack](https://forums.unraid.net/topic/35866-unraid-6-nerdpack-cli-tools-iftop-iotop-screen-kbd-etc/)
@@ -33,7 +35,9 @@ Within NerdPack, enable the following:
 * python-pip
 * python-setuptools
 
-From there, go to UserScripts....
+From there, go to UserScripts and add a new script called ArrJanitor.
+
+Edit your newly crteated script and paste the contents of ArrJanitor.py. Make sure to remove the "#!/bin/bash" at the top that UserScripts automatically adds.
 
 
 
