@@ -1,15 +1,15 @@
-# Arr Janitor
+# ArrJanitor
 A python script designed to clean up Radarr/Sonarr downloads in Deluge. Designed to be ran in UnRaid.
 
 
-## Why Arr Janitor? 
+## Why ArrJanitor? 
 
 Radarr & Sonarr handling downloads is great. And Deluge is a great client. However, I couldn't find a good solution for actually deleting torrents that have been upgraded & replaced with higher quality versons. Radarr v3 does have some support for seed time/ratio limits, however this applies globally to all torrents. I want to seed a torrent indefineitly unless it has been replaced. 
 
-That's where Arr Janitor comes in.
+That's where ArrJanitor comes in.
 
 
-## What is Arr Janitor?
+## What is ArrJanitor?
 
 A small python script to interface between Radarr/Sonarr instances and Deluge. It implments logic to check on media that Radarr/Sonarr have replaced with a higher quality verson but the old torrent is still active inside of Deluge. 
 
