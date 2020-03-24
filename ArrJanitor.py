@@ -226,7 +226,7 @@ if __name__ == "__main__":
             df = arr_frame_formatter(initial_grab_response,dupes=False
                                     ).sort_values(['date'], ascending=True)
             #generate service specific media ID
-            df['media_id'] = f"{df['movieId'].astype(str)} - {k}"
+            df['media_id'] = df['movieId'].astype(str) + '-' + str(k)
             df.drop(columns=['movieId','movie'],inplace=True)
             
             
@@ -234,7 +234,7 @@ if __name__ == "__main__":
             df = arr_frame_formatter(initial_grab_response,dupes=False
                                     ).sort_values(['date'],ascending=True)      
             #generate service specific media ID
-            df['media_id'] = f"{df['seriesId'].astype(str)} - {df['episodeId'].astype(str)} - {k}"
+            df['media_id'] = df['seriesId'].astype(str) +'-'+ df['episodeId'].astype(str) + '-' + str(k)
             #drop sonarr specific columns
             df.drop(columns=['series','episodeId','episode','seriesId'],inplace=True)
 
