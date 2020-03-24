@@ -22,8 +22,9 @@ The script was designed to be ran in UnRaid via userscripts with python 3.8 inst
 ## How? 
 
 To get this up and running on UnRaid, you must install:
-* Userscripts
-* NerdPack
+* [UserScripts](https://forums.unraid.net/topic/48286-plugin-ca-user-scripts/)
+* [NerdPack](https://forums.unraid.net/topic/35866-unraid-6-nerdpack-cli-tools-iftop-iotop-screen-kbd-etc/)
+
 
 Within NerdPack, enable the following:
 
