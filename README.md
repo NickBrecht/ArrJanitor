@@ -10,7 +10,7 @@ That's where ArrJanitor comes in.
 
 ## What is ArrJanitor?
 
-A small python script to interface between Radarr/Sonarr instances and Deluge. It implements logic to check on media that Radarr/Sonarr have replaced with a higher quality version but the older lower quality torrent is still active inside of Deluge. 
+A small python script to interface between Radarr/Sonarr instances and Deluge.ArrJanitor cleans up downloads from Radarr/Sonarr when higher quality torrents have been downloaded. ArrJanitor does allow for lower quality torrents to seed for several days (default is 4 days) before being removed from Deluge. 
 
 ArrJanitor identifies duplicates by movieId (Radarr) and episodeId + seriesID (Sonarr). If there are duplicates and if the torrents have passed the desired days_to_seed, then it will attempt to delete the torrent and data. The script will keep the most recent copy to be grabbed by Radarr/Sonarr. ArrJanitor will only remove files that have been upgraded within a single instance of Radarr. Example being if Radarr and Radarr4k download the same movie, ArrJanitor will not consider this a duplicate.
 
