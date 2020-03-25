@@ -37,17 +37,7 @@ Within NerdPack, enable the following:
 
 From there, go to UserScripts and add a new script called ArrJanitor.
 
-Edit your newly created script and paste the contents of ArrJanitor.py. Make sure to remove the "#!/bin/bash" at the top that UserScripts automatically adds.
+Edit your newly created script and paste the contents of ArrJanitor.py. Make sure to remove the "#!/bin/bash" at the top that UserScripts automatically adds. Fill in your information for the relative Radarr, Sonarr, and Deluge URLs & API keys/passwords. If you're not running one of these services, just leave '' in place. For example, if you have 2 Radarr instances, 1 Sonarr, and Deluge, your configuration should look something like this:
 
 
-
-
-
-
-
-
-
-
-
-
-
+![example image](https://i.imgur.com/Bw2Nco3.jpg)
