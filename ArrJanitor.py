@@ -4,6 +4,8 @@ import os
 import re
 import json
 import datetime
+import pip._internal.main as pip
+
 
 ### args list ###
 radarr_url = ''
@@ -57,20 +59,24 @@ if radarr2_url and radarr2_api_key:
 
 #install pandas & requests not found in Nerdpack's python... 
 try:
-    subprocess.check_call([sys.executable, "-m", "pip3", "install", 'pandas'])
+    import pandas as pd
 except:
-    pass
+    try:
+        pip.main(['install','pandas'])
+        import pandas as pd
+    except Exception as e:
+        raise Exception(f'Error importing/installing Pandas. Ensure pip is installed from Nerdpack: {e}')
 
 try:
-    subprocess.check_call([sys.executable, "-m", "pip3", "install", 'requests'])
+    import requests
 except:
-    pass
+    try:
+        pip.main(['install','requests'])
+        import requests
+    except Exception as e:
+        raise Exception(f'Error importing/installing Requests. Ensure pip is installed from Nerdpack: {e}')
 
-import pandas as pd
-import requests
-
-
-
+        
 #deluge class
 class Deluge:
     '''
