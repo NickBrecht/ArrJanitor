@@ -283,7 +283,7 @@ if __name__ == "__main__":
         media_to_delete['deleted'] = media_to_delete.apply(lambda download : client.remove_torrent(download['hash']),axis=1)
 
         #print out if someone is watching...
-        print(f"Script completed: {media_to_delete['deleted'].sum()} torrents have been deleted.")  
+        print(f"ArrJanitor finished: {media_to_delete['deleted'].sum()} torrents have been deleted.")  
         for index, row in media_to_delete.iterrows():
             print (f"{row['name']} : {round(row['total_size']/1073741824,2)} GB(s)")
     else:
