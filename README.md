@@ -8,20 +8,19 @@ Radarr & Sonarr handling downloads is great. And Deluge is a great client. Howev
 
 That's where ArrJanitor comes in.
 
-
 ## What is ArrJanitor?
 
 A small python script to interface between Radarr/Sonarr instances and Deluge. It implements logic to check on media that Radarr/Sonarr have replaced with a higher quality version but the older lower quality torrent is still active inside of Deluge. 
 
-The script identifies duplicates by movieId (Radarr) and episodeId + seriesID (Sonarr). If there are duplicates and if the torrents have passed the desired days_to_seed, then it will attempt to delete the torrent and data. The script will keep the most recent copy to be grabbed by Radarr/Sonarr. ArrJanitor will only remove files that have been upgraded within a single instance of Radarr. Example being if Radarr and Radarr4k download the same movie, ArrJanitor will not consider this a duplicate.
+ArrJanitor identifies duplicates by movieId (Radarr) and episodeId + seriesID (Sonarr). If there are duplicates and if the torrents have passed the desired days_to_seed, then it will attempt to delete the torrent and data. The script will keep the most recent copy to be grabbed by Radarr/Sonarr. ArrJanitor will only remove files that have been upgraded within a single instance of Radarr. Example being if Radarr and Radarr4k download the same movie, ArrJanitor will not consider this a duplicate.
 
 ## Where?
 
-The script was designed to be ran in UnRaid via userscripts with python 3.8 installed. However, any OS with a python >3.6 environment should be able to run it. 
+ArrJanitor was designed to be ran in UnRaid via userscripts with python 3.8 installed. However, any OS with a python >3.6 environment should be able to run it.
 
 ## How? 
 
-As stated this script should be OS agnostic however the original intent was/is to run within UnRaid. 
+ArrJanitor should be OS agnostic however the original intent was/is to run within UnRaid. 
 
 To get this up and running on UnRaid, you must install:
 * [UserScripts](https://forums.unraid.net/topic/48286-plugin-ca-user-scripts/)
@@ -35,7 +34,7 @@ Within NerdPack, enable the following:
 * python-pip
 * python-setuptools
 
-From there, go to UserScripts and add a new script called ArrJanitor.
+From there, go to UserScripts and add a new script named ArrJanitor.
 
 Edit your newly created script and paste the contents of ArrJanitor.py. Make sure to remove the "#!/bin/bash" at the top that UserScripts automatically adds. Fill in your information for the relative Radarr, Sonarr, and Deluge URLs & API keys/passwords. If you're not running one of these services, just leave '' in place. For example, if you have 2 Radarr instances, 1 Sonarr, and Deluge, your configuration should look something like this:
 
