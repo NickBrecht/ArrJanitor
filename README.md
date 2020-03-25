@@ -41,3 +41,9 @@ Edit your newly created script and paste the contents of ArrJanitor.py. Make sur
 
 
 ![example image](https://i.imgur.com/Bw2Nco3.jpg)
+
+
+ArrJanitor has a default days_to_seed value of 4. Changing this value will allow you to dial in how many days you want to keep lower grade torrents around for (0 will examine any completed torrent).
+
+
+
