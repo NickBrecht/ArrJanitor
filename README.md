@@ -22,8 +22,6 @@ ArrJanitor was designed to be ran in UnRaid via userscripts with python 3.8 inst
 
 ## How? 
 
-ArrJanitor should be OS agnostic however the original intent was/is to run within UnRaid. 
-
 To get this up and running on UnRaid, you must install:
 * [UserScripts](https://forums.unraid.net/topic/48286-plugin-ca-user-scripts/)
 * [NerdPack](https://forums.unraid.net/topic/35866-unraid-6-nerdpack-cli-tools-iftop-iotop-screen-kbd-etc/)
