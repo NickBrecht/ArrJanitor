@@ -4,7 +4,7 @@ import os
 import re
 import json
 import datetime
-import pip._internal.main as pip
+from pip._internal import main as pip
 
 
 ### args list ###
