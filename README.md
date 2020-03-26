@@ -14,6 +14,8 @@ A small python script to interface between Radarr/Sonarr instances and Deluge.Ar
 
 ArrJanitor identifies duplicates by movieId (Radarr) and episodeId + seriesID (Sonarr). If there are duplicates and if the torrents have passed the desired days_to_seed, then it will attempt to delete the torrent and data. The script will keep the most recent copy to be grabbed by Radarr/Sonarr. ArrJanitor will only remove files that have been upgraded within a single instance of Radarr. Example being if Radarr and Radarr4k download the same movie, ArrJanitor will not consider this a duplicate.
 
+ArrJanitor only supports Deluge >2.0. It does not work with Deluge 1.3 or any other torrent client currently.
+
 ## Where?
 
 ArrJanitor was designed to be ran in UnRaid via userscripts with python 3.8 installed. However, any OS with a python >3.6 environment should be able to run it.
