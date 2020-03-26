@@ -25,38 +25,7 @@ deluge_password = ''
 
 days_to_seed = 4 #days to keep torrents even if they've been replaced.
 
-#### Arg Collecting ####
-
-#create top level dict for holding variables in
-services_dict =  {'downloaders':{}, 'arr':{}}
-
-#should have just made this a class but whatever too late...
-def services_dict_formatter(d,key, service, url, passkey):
-    d[key].update({service:{}})
-    d[key][service]['url'] = url
-    if key == 'downloaders':
-        d[key][service]['password'] = passkey
-    elif key == 'arr':
-        d[key][service]['api_key'] = passkey
-        
-if deluge_url and deluge_password:
-    services_dict_formatter(services_dict,'downloaders','deluge',deluge_url,deluge_password)
-
-if sonarr_url and sonarr_api_key:
-    services_dict_formatter(services_dict,'arr','sonarr',sonarr_url,sonarr_api_key)
-    
-if radarr_url and radarr_api_key:
-    services_dict_formatter(services_dict,'arr','radarr',radarr_url,radarr_api_key)
-
-if sonarr2_url and sonarr2_api_key:
-    services_dict_formatter(services_dict,'arr','sonarr2',sonarr_url,sonarr_api_key)
-    
-if radarr2_url and radarr2_api_key:
-    services_dict_formatter(services_dict,'arr','radarr2',radarr_url,radarr_api_key)
-
-
 #### Script ####
-
 #install pandas & requests not found in Nerdpack's python... 
 try:
     import pandas as pd
@@ -76,7 +45,40 @@ except:
     except Exception as e:
         raise Exception(f'Error importing/installing Requests. Ensure pip is installed from Nerdpack: {e}')
 
+def url_cleaner(url):
+    '''Small function to remove query paths that might be inside the URL.'''
+    r_url = requests.urllib3.util.parse_url(url)
+    return url.rstrip(r_url.request_uri) 
+
+#### Arg Collecting ####
+
+#create top level dict for holding variables in
+services_dict =  {'downloaders':{}, 'arr':{}}
+
+#should have just made this a class but whatever too late...
+def services_dict_formatter(d,key, service, url, passkey):
+    d[key].update({service:{}})
+    d[key][service]['url'] = url_cleaner(url)
+    if key == 'downloaders':
+        d[key][service]['password'] = passkey
+    elif key == 'arr':
+        d[key][service]['api_key'] = passkey
         
+if deluge_url and deluge_password:
+    services_dict_formatter(services_dict,'downloaders','deluge',deluge_url,deluge_password)
+
+if sonarr_url and sonarr_api_key:
+    services_dict_formatter(services_dict,'arr','sonarr',sonarr_url,sonarr_api_key)
+    
+if radarr_url and radarr_api_key:
+    services_dict_formatter(services_dict,'arr','radarr',radarr_url,radarr_api_key)
+
+if sonarr2_url and sonarr2_api_key:
+    services_dict_formatter(services_dict,'arr','sonarr2',sonarr_url,sonarr_api_key)
+    
+if radarr2_url and radarr2_api_key:
+    services_dict_formatter(services_dict,'arr','radarr2',radarr_url,radarr_api_key)
+    
 #deluge class
 class Deluge:
     '''
@@ -215,7 +217,8 @@ def arr_frame_formatter(r,cols=None,dupes=True):
 if __name__ == "__main__":
 
     #create deluge client sessions...
-    client = Deluge(deluge_url,deluge_password)
+    client = Deluge(services_dict['downloaders']['deluge']['url'],
+                    services_dict['downloaders']['deluge']['password'])
 
     days_to_seed_dt = datetime.date.today() - datetime.timedelta(days =days_to_seed)
 
