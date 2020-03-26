@@ -254,18 +254,23 @@ if __name__ == "__main__":
         #concat the data within the master df.
         master_arr_media = pd.concat([master_arr_media,df]).reset_index(drop=True)
         
+     
+    try:
         
-    # #grab all current torrents in session
-    current_torrents = client.get_torrent(cols=['name','hash','total_size','completed_time'])
+        #grab all current torrents in session
+        current_torrents = client.get_torrent(cols=['name','hash','total_size','completed_time'])
+        
+        #filter out 0s (uncompleted torrents)
+        current_torrents = current_torrents[current_torrents['completed_time'] > 0]
+        
+        #format dt col
+        current_torrents['completed_time'] = pd.to_datetime(current_torrents['completed_time'],unit='s')
+        
+    except KeyError as e:
+        raise Exception('KeyError - ArrJanitor does not support Deluge 1.3.')
 
-    #filter out 0s (uncompleted torrents)
-    current_torrents = current_torrents[current_torrents['completed_time'] > 0]
 
-    #format dt col
-    current_torrents['completed_time'] = pd.to_datetime(current_torrents['completed_time'],unit='s')
-
-
-    # #combine target media & current torrents to generate list of torrents that need to be deleted. 
+    #combine target media & current torrents to generate list of torrents that need to be deleted. 
     combined_df = pd.merge(master_arr_media, current_torrents, how='left',left_on=['downloadId'], right_index=True)
 
     combined_df.dropna(inplace=True)
