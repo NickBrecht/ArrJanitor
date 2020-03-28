@@ -172,13 +172,21 @@ class Deluge:
         
         #transpose df if individual downloadid is passed. Also ensure hash(downloadid) is encoded into the index.
         if downloadid:
+            #Was any data returned for hash?
+            if len(df) == 0:
+                raise Exception('Torrent not found within Deluge.')
+                
             df = df.transpose()
             try: 
                 df.set_index('hash',drop=False,inplace=True)
             except:
                 df['hash'] = downloadid
                 df.set_index('hash',drop=True,inplace=True)
-            
+        
+        #Was any data returned for the list? 
+        if len(df) == 0:
+            raise Exception('Deluge contains no completed torrents.')
+
         return df
 
     @property
@@ -262,7 +270,7 @@ if __name__ == "__main__":
         
         #grab all current torrents in session
         current_torrents = client.get_torrent(cols=['name','hash','total_size','completed_time'])
-        
+
         #filter out 0s (uncompleted torrents)
         current_torrents = current_torrents[current_torrents['completed_time'] > 0]
         
